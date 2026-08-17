@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "MasterProduct": {
+      "title": "Master Product",
+      "description": "Canonical master product registry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "canonicalName": { "type": "string" },
+        "barcode": { "type": "string" },
+        "sku": { "type": "string" }
+      },
+      "required": ["id", "canonicalName"]
+    },
+    "InventoryItem": {
+      "title": "Inventory Item",
+      "description": "Tenant inventory stock and cost records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tenantId": { "type": "string" },
+        "storeId": { "type": "string" },
+        "masterProductId": { "type": "string" },
+        "quantity": { "type": "number" },
+        "unitCost": { "type": "number" }
+      },
+      "required": ["id", "tenantId", "masterProductId", "quantity"]
+    }
+  },
+  "firestore": {
+    "/masterProducts/{productId}": {
+      "schema": { "$ref": "#/entities/MasterProduct" },
+      "description": "Master products collection"
+    },
+    "/tenants/{tenantId}/inventory/{inventoryId}": {
+      "schema": { "$ref": "#/entities/InventoryItem" },
+      "description": "Tenant inventory subcollection"
+    }
+  }
+}

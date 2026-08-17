@@ -1,0 +1,215 @@
+{
+  "timestamp": "2026-08-16T19:55:09.474Z",
+  "masterProducts": [
+    {
+      "id": "TEST-PROD-001",
+      "canonicalName": "Producto de prueba actualizado",
+      "brand": "Marca Test",
+      "category": "Abarrotes",
+      "subcategory": "General",
+      "barcode": "",
+      "sku": "TEST-SKU-001",
+      "presentation": "PZA",
+      "unit": "pieza",
+      "packSize": 1,
+      "avgRetailPriceCdmx": 27.9,
+      "cheapestWholesaleCost": 27.9,
+      "cheapestSupplierId": "TEST",
+      "active": true,
+      "lastUpdated": "2026-08-16T15:00:00Z"
+    },
+    {
+      "id": "prod-test-123",
+      "canonicalName": "",
+      "brand": "",
+      "category": "",
+      "subcategory": "General",
+      "sku": "test-123",
+      "presentation": "PZA",
+      "unit": "pieza",
+      "packSize": 1,
+      "avgRetailPriceCdmx": 100,
+      "cheapestWholesaleCost": 100,
+      "cheapestSupplierId": "zorro",
+      "active": true,
+      "lastUpdated": "2026-08-16T19:08:19.690Z"
+    },
+    {
+      "id": "prod-750100019999",
+      "canonicalName": "Aceite Nutrioli 1L Test",
+      "brand": "Nutrioli",
+      "category": "Abarrotes",
+      "subcategory": "General",
+      "sku": "750100019999",
+      "presentation": "PZA",
+      "unit": "pieza",
+      "packSize": 1,
+      "avgRetailPriceCdmx": 45,
+      "cheapestWholesaleCost": 45,
+      "cheapestSupplierId": "",
+      "active": true,
+      "lastUpdated": "2026-08-16T19:51:53.320Z"
+    }
+  ],
+  "priceRecords": [
+    {
+      "id": "price-1786907300033-r58y1",
+      "tenantId": "tenant-cdmx-01",
+      "organizationId": "org-cdmx-01",
+      "supplierId": "zorro",
+      "supplierName": "ZORRO",
+      "sourceId": "zorro",
+      "masterProductId": "prod-test-123",
+      "productName": "",
+      "rawObservationId": "",
+      "price": 100,
+      "changePercent": 0,
+      "currency": "MXN",
+      "unit": "pieza",
+      "presentation": "PZA",
+      "packSize": 1,
+      "priceType": "PIECE",
+      "availability": "IN_STOCK",
+      "sourceUrl": "",
+      "observedAt": "2026-08-16T19:08:20.033Z",
+      "validFrom": "2026-08-16T19:08:20.033Z",
+      "confidence": 100,
+      "status": "ACTIVE",
+      "provenance": {
+        "productUrl": "",
+        "adapter": "DataHub",
+        "runId": "auto",
+        "capturedAt": "2026-08-16T19:08:20.033Z"
+      }
+    },
+    {
+      "id": "price-1786909195769-xd10l",
+      "tenantId": "tenant-cdmx-01",
+      "organizationId": "org-cdmx-01",
+      "supplierId": "unknown",
+      "supplierName": "UNKNOWN",
+      "sourceId": "unknown",
+      "masterProductId": "prod-750100019999",
+      "productName": "Aceite Nutrioli 1L Test",
+      "rawObservationId": "",
+      "price": 45,
+      "changePercent": 0,
+      "currency": "MXN",
+      "unit": "pieza",
+      "presentation": "PZA",
+      "packSize": 1,
+      "priceType": "PIECE",
+      "availability": "IN_STOCK",
+      "sourceUrl": "",
+      "observedAt": "2026-08-16T19:39:55.768Z",
+      "validFrom": "2026-08-16T19:39:55.768Z",
+      "confidence": 100,
+      "status": "ACTIVE",
+      "provenance": {
+        "sourceUrl": "",
+        "adapter": "DataHub",
+        "runId": "auto",
+        "capturedAt": "2026-08-16T19:39:55.768Z"
+      }
+    }
+  ],
+  "priceHistory": [
+    {
+      "id": "hist-1786907300033-bd5d0",
+      "masterProductId": "prod-test-123",
+      "productName": "",
+      "supplierId": "zorro",
+      "supplierName": "ZORRO",
+      "price": 100,
+      "observedAt": "2026-08-16T19:08:20.033Z",
+      "sourceUrl": "",
+      "runId": "auto"
+    },
+    {
+      "id": "hist-1786909195769-uyz69",
+      "masterProductId": "prod-750100019999",
+      "productName": "Aceite Nutrioli 1L Test",
+      "supplierId": "unknown",
+      "supplierName": "UNKNOWN",
+      "price": 45,
+      "observedAt": "2026-08-16T19:39:55.768Z",
+      "sourceUrl": "",
+      "runId": "auto"
+    }
+  ],
+  "supplierOffers": [
+    {
+      "id": "offer-TEST-PROD-001-TEST",
+      "masterProductId": "TEST-PROD-001",
+      "supplierId": "TEST",
+      "supplierName": "TEST",
+      "price": 27.9,
+      "currency": "MXN",
+      "priceType": "PIECE",
+      "packSize": 1,
+      "availability": "IN_STOCK",
+      "sourceUrl": "https://example.com/product",
+      "observedAt": "2026-08-16T15:00:00Z"
+    }
+  ],
+  "rawProductObservations": [
+    {
+      "id": "obs-zorro-test-123",
+      "sourceRecordId": "obs-zorro-test-123",
+      "sourceId": "zorro",
+      "sourceName": "zorro",
+      "supplierId": "zorro",
+      "scraperRunId": "auto",
+      "observedAt": "2026-08-16T19:08:20.417Z",
+      "productNameRaw": "",
+      "skuRaw": "test-123",
+      "priceRaw": 100,
+      "currencyRaw": "MXN",
+      "httpStatus": 200,
+      "extractionStatus": "SUCCESS",
+      "parserVersion": "1.0",
+      "dataQualityStatus": "VALID",
+      "processingStatus": "PROCESSED"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "audit-action-1786891655019",
+      "tenantId": "tenant-cdmx-01",
+      "action": "EXECUTE_CONTROL_ACTION_TEST-ACTION",
+      "actor": "ControlCenter_AuthorizedOwner",
+      "timestamp": "2026-08-16T14:47:35.019Z",
+      "before": {
+        "status": "pending_approval"
+      },
+      "after": {
+        "status": "executed",
+        "payload": {
+          "action": "override_cost",
+          "sku": "ALP-LECHE-1L"
+        }
+      },
+      "reason": "Acción autorizada desde Retail Control Center",
+      "sourceEvidence": "DecisionEngine / Agent Signal"
+    },
+    {
+      "id": "audit-action-1786891872674",
+      "tenantId": "tenant-cdmx-01",
+      "action": "EXECUTE_CONTROL_ACTION_TEST-ACTION",
+      "actor": "ControlCenter_AuthorizedOwner",
+      "timestamp": "2026-08-16T14:51:12.674Z",
+      "before": {
+        "status": "pending_approval"
+      },
+      "after": {
+        "status": "executed",
+        "payload": {
+          "action": "override_cost",
+          "sku": "ALP-LECHE-1L"
+        }
+      },
+      "reason": "Acción autorizada desde Retail Control Center",
+      "sourceEvidence": "DecisionEngine / Agent Signal"
+    }
+  ]
+}

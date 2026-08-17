@@ -1,0 +1,8 @@
+{
+  "name": "Mi Abarrotero",
+  "description": "Plataforma de inteligencia de compras e inventario para pequeños comercios y tiendas de abarrotes en México.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
