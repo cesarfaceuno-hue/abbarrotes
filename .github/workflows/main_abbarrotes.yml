@@ -54,6 +54,7 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B62EC58580B24F13B4186572673DED82 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8D1B71182F0D4952A639E054EC2FDB34 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AB990D60B5F64C48AE1F8ECCBB120589 }}
+          auth-type: 'OIDC'
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -62,4 +63,3 @@ jobs:
           app-name: 'abbarrotes'
           slot-name: 'Production'
           package: .
-          
