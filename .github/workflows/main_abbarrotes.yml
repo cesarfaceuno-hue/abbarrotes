@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_VERSION: '20.x'
+  NODE_VERSION: '22.x'
 
 jobs:
 
@@ -34,7 +34,7 @@ jobs:
 
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
 
       - name: Build application
@@ -48,7 +48,7 @@ jobs:
       - name: Prepare deployment package
         run: |
           rm -rf node_modules
-          npm ci --omit=dev
+          npm install --omit=dev
 
 
       - name: Upload artifact
