@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - abbarrotes
 
 permissions:
@@ -11,48 +8,83 @@ on:
   push:
     branches:
       - main
+
   workflow_dispatch:
 
+env:
+  NODE_VERSION: '20.x'
+
 jobs:
+
   build:
+    name: Build Node.js app
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js version
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.x'
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
-      - name: Install dependencies, build and test
+
+      - name: Install dependencies
+        run: npm ci
+
+
+      - name: Build application
+        run: npm run build --if-present
+
+
+      - name: Run tests
+        run: npm test --if-present
+
+
+      - name: Prepare deployment package
         run: |
-          npm ci
-          npm run build --if-present
-          npm run test --if-present
+          rm -rf node_modules
+          npm ci --omit=dev
 
-      - name: Upload artifact for deployment job
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: |
+            .
+            !.git
+            !.github
+
+
 
   deploy:
+
+    name: Deploy to Azure
     runs-on: ubuntu-latest
+
     needs: build
 
     steps:
-      - name: Download artifact from build job
+
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: node-app
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
+
+      - name: Deploy Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+
           app-name: 'abbarrotes'
+
           slot-name: 'Production'
+
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+
           package: .
