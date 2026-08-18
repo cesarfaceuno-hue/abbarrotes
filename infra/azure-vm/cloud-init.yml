@@ -1,0 +1,40 @@
+#cloud-config
+# Minimal cloud-init para preparar Ubuntu 22.04 LTS con Node.js 20.x, npm y git.
+# NO incluye secretos, NO abre puertos públicos y NO inicia la aplicación.
+
+users:
+  - name: deployer
+    gecos: "Deployer user for abbarrotes app"
+    groups: users
+    shell: /bin/bash
+    lock_passwd: true
+
+package_update: true
+packages:
+  - curl
+  - ca-certificates
+  - git
+  - build-essential
+  - apt-transport-https
+  - gnupg
+
+runcmd:
+  # 1) Asegurar paquetes del sistema actualizados (package_update ya hace apt-get update, pero repetimos para robustez)
+  - apt-get update -y
+  # 2) Instalación de Node.js 20.x mediante NodeSource (añade fuente y clave). Fail-fast: no usar '|| true'.
+  - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+  - apt-get install -y --no-install-recommends nodejs
+  # 3) Asegurar git (idempotente)
+  - apt-get install -y --no-install-recommends git
+  # 4) Crear directorios de la aplicación y asegurar permisos (persistencia a cargo del operador)
+  - mkdir -p /var/www/abbarrotes
+  - mkdir -p /var/www/abbarrotes/data
+  - chown -R deployer:deployer /var/www/abbarrotes
+  - chmod 0750 /var/www/abbarrotes
+  - chmod 0770 /var/www/abbarrotes/data
+  # 5) Marcar safe.directory para git cuando se use el usuario deployer
+  - su - deployer -c "git config --global --add safe.directory /var/www/abbarrotes"
+  # NO clonar, NO npm install, NO npm build, NO start
+  # NO se configuran reglas de red ni se abren puertos públicos aquí.
+
+final_message: "cloud-init: Node.js 20.x and git installed; /var/www/abbarrotes prepared (no secrets)."
